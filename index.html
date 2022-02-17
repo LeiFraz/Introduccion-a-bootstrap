@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- es importante que la linea de abajo esté para usar con bootstrap-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Probando Bootstrap 5.1</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+
+        .card {
+            margin: 30px;
+            background-color: rgba(97, 171, 241, 0.836);
+            padding: 40px;
+            border-radius: 5px;
+        }
+        .contenedor {
+            margin: 30px 10px 10px 10px;
+            background: #0d6efd;
+            color: #fff;
+            min-height: 200px;
+            /*antes estaba en 100, por problemas al codificar, algunos contenedores quedaban chicos,
+            le sume 100px más
+            
+            ahora esta en "min-height: 200px" quiere decir que como minimo los contenedores van a tener
+            200px, pero pueden tener aun mas (haciendo los contenedores un poco más dinamicos)...
+            esto se modifico debido que puse un contenedor con 17 div.*/
+        }
+
+        .contenedor div{
+            background: rgba(255, 255, 255, .2);
+            padding: 15px 20px;
+            border: 1px solid #0d6efd;
+        }
+
+        nav{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background: #0d6efd;
+            height: 80px;
+            box-shadow: rgba(17, 99, 252, 0.466) 0px 8px 24px;
+            display: flex;
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        nav a{
+            flex: 1;
+            height: 100%;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            transition: .2s ease-in-out all;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+	        background: #135cfaa9;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#1"> Botones </a>
+        <a href="#2"> Display Flex</a>
+        <a href="#3"> Flex Row</a>
+        <a href="#4"> Justify Content</a>
+        <a href="#5"> Fill</a>
+        <a href="#6"> Align Items</a>
+        <a href="#7"> Align Self</a>
+        <a href="#8"> Auto Margin</a>
+        <a href="#9"> Flex WRAP</a>
+        <a href="#10"> ORDER</a>
+        <a href="#11"> Align Content</a>
+    </nav>
+    <!-- la clase CONTAINER es para tener un contenedor como tal-->
+    <div class="container">
+
+        <!----------------------------->
+        <!-- CLASES PARA LOS BOTONES -->
+        <!----------------------------->
+        <div class="card" id="1">
+            <div class="row my-5">
+            <div class="col">
+                <h4> Probando clase del boton </h4>
+                <hr>
+        
+                 <!-- clase boton "btn" y que sea primario "btn-primary" AZUL, secondary tenemos igual GRIS-->
+                <button class="btn btn-primary">Soy un Boton Primario</button>
+                <button class="btn btn-secondary">Soy un Boton Secundario</button>
+            </div>
+            </div>
+        </div>
+
+        <!------------------>
+        <!-- DISPLAY FLEX -->
+        <!------------------>
+
+        <div class="card" id="2">
+        <!-- fila "row", con un margen en el eje Y de 5 "my-5"-->
+            <div class="row my-5"> 
+
+            <!-- columna "col"-->
+            <div class="col">
+
+            <!--
+            Podemos establecer que tipo de elemento flexbox será, de tipo BLOCK o INLINE.
+            Y podemos establecer también desde que dispositivo lo será.
+
+                d-flex
+                d-inline-flex
+
+                d-sm-flex               ≥576px
+                d-sm-inline-flex        ≥576px
+                d-md-flex               ≥768px
+                d-md-inline-flex        ≥768px
+                d-lg-flex               ≥992px
+                d-lg-inline-flex        ≥992px
+                d-xl-flex               ≥1200px
+                d-xl-inline-flex        ≥1200px
+            -->
+
+                <h4>Tipos de Display Flex</h4>
+                <hr>
+
+                <!--background de color primario "bg-primary" AZUL-->
+                <!--texto blanco "text-white"-->
+                <!--padding de 3 "p-3"-->
+                <div class="bg-primary text-white p-3 d-flex">
+
+                    <!--Margin Bottom 0 "mb-0", el margen de abajo es de 0-->
+                    <p class="mb-0">Display Flex <strong>d-flex</strong> </p>
+                </div>
+                
+                <br>
+                <div class="bg-primary text-white p-3 d-inline-flex">
+                    <p class="mb-0">Display inline Flex <strong>d-inline-flex</strong> </p>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <!---------------->
+        <!--  FLEX ROW  -->
+        <!---------------->
+        <div class="card" id="3">
+            <div class="row my-5" > 
+
+            <div class="col">
+
+                <h4>Direccion</h4>
+                <hr>
+
+            <!-- Variantes:
+
+                    flex-row
+                    flex-row-reverse
+
+                    flex-column
+                    flex-column-reverse
+
+                    sm | md | lg | xl | xxl (poniendose donde esta el "*")
+                    flex-*-row
+                    flex-*-row-reverse
+                    flex-*-column
+                    flex-*-column-reverse
+            -->
+
+                <!-- se colocan en un formato horizontal, mientras haya espacio se colocan a lado-->
+                <p>FLEX-ROW</p>
+
+                <div class="contenedor">
+
+                    <div>Sin <strong>d-flex</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <div class="contenedor d-flex">
+
+                    <div>Con <strong>d-flex</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- cuando trabajamos con FLEXBOX "flex" a la propiedad "flex-row" ya la tenemos automaticamente-->
+                <div class="contenedor d-flex flex-row">
+
+                    <div>Con <strong>d-flex</strong> y <strong>flex-row</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <br>
+                <!-- cambiamos el flujo gracias a la propiedad "flex-row-reverse"-->
+                <p>FLEX-ROW-REVERSE</p>
+
+                <div class="contenedor d-flex flex-row-reverse">
+
+                    <div>Con <strong>d-flex</strong> y <strong>flex-row-reverse</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <br>
+                <!-- se colocan en un formato vertical, si no hay espacio se colocan abajo -->
+                <p>FLEX-COLUMN</p>
+
+                <div class="contenedor d-flex flex-column">
+
+                    <div>Con <strong>d-flex</strong> y <strong>flex-column</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <br>
+                <!-- cambiamos el flujo gracias a la propiedad "flex-column-reverse"-->
+                <p>FLEX-COLUMN-REVERSE</p>
+
+                <div class="contenedor d-flex flex-column-reverse">
+
+                    <div>Con <strong>d-flex</strong> y <strong>flex-column-reverse</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <!--------------------->
+        <!-- JUSTIFY CONTENT -->
+        <!--------------------->
+        <div class="card" id="4">
+            <div class="row my-5"  >
+
+            <div class="col">
+    
+                <h4>Justify Content</h4>
+                <hr>
+                
+                <!-- Variantes:
+
+                    justify-content-start
+                    justify-content-end
+                    justify-content-center
+                    justify-content-between
+                    justify-content-around
+
+                    sm | md | lg | xl | xxl (poniendose donde esta el "*")
+                    justify-content-*-start
+                    justify-content-*-end
+                    justify-content-*-center
+                    justify-content-*-between
+                    justify-content-*-around
+            -->
+                
+                <!-- posicionamos los elementos a la izquierda, por defecto ya lo tenemos-->
+                <p> JUSTIFY-CONTENT-START</p>
+
+                <div class="contenedor d-flex justify-content-start">
+                    
+                    <div><strong>START</strong> </div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- posicionamos los elementos en el centro-->
+                <p> JUSTIFY-CONTENT-CENTER</p>
+
+                <div class="contenedor d-flex justify-content-center">
+                    
+                    <div><strong>CENTER</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- posicionamos los elementos en el centro-->
+                <p> JUSTIFY-CONTENT-END</p>
+
+                <div class="contenedor d-flex justify-content-end">
+                    
+                    <div><strong>END</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- el espaciado que haya, se reparte en medio de los elementos-->
+                <p> JUSTIFY-CONTENT-BETWEEN</p>
+
+                <div class="contenedor d-flex justify-content-between">
+                    
+                    <div><strong>BETWEEN</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- el espaciado que haya, se reparte en medio de los elementos-->
+                <p> JUSTIFY-CONTENT-AROUND</p>
+
+                <div class="contenedor d-flex justify-content-around">
+                    
+                    <div><strong>AROUND</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+
+                <!-- el espaciado que haya, se reparte en medio de los elementos-->
+                <p> JUSTIFY-CONTENT-EVENLY</p>
+
+                <div class="contenedor d-flex justify-content-evenly">
+                    
+                    <div><strong>EVENLY</strong></div>
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                </div>
+    
+            </div>
+            </div>
+        </div>
+        <!------------------>
+        <!--     FILL     -->
+        <!------------------>
+        <div class="card" id="5">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>FILL</h4>
+                <hr>
+
+                <!-- 
+                    flex-fill
+
+                    sm | md | lg | xl | xxl
+                    flex-*-fill
+                -->
+
+                <p> FLEX-FILL</p>
+
+                <!-- usamos la propiedad FLEX-FILL
+                    la cual se debe poner en un elemento dentro de un contenedor que sea de tipo flex
+                -->
+                <div class="contenedor d-flex align-items-start">
+
+                    <!-- la SEGUNDA CAJA va a abarcar TODO EL ESPACIO QUE PUEDA, mientras que las otras solo
+                    ocupan lo que necesitan -->
+                    <div> probando la propiedad flex-fill en un elemento --> </div>
+                    <div class="flex-fill"> CLASE FLEX-FILL </div>
+                    <div class="flex-fill"> CLASE FLEX-FILL </div>
+                    <div> otro div </div>
+
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <!------------------------->
+        <!--     ALIGN ITEMS     -->
+        <!------------------------->
+        <div class="card" id="6">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>ALIGN ITEMS (+ usado cuando es de una fila)</h4>
+                <hr>
+
+                <!-- Variantes:
+                    align-items-start
+                    align-items-end
+                    align-items-center
+                    align-items-baseline
+                    align-items-stretch
+
+                    sm | md | lg | xl | xxl
+                    align-items-*-start
+                    align-items-*-end
+                    align-items-*-center
+                    align-items-*-baseline
+                    align-items-*-stretch
+                -->
+
+                <p> ALIGN-ITEMS-START</p>
+
+                <!-- usamos solamente d-flex y ocupa todo el alto del contenedor-->
+                <div class="contenedor d-flex">
+
+                    <div> Con <strong>d-flex</strong></div>
+                </div>
+
+                <!-- usamos d-flex con align-items-start
+                alinea los contenedores de forma horizontal (por el flex)
+                y los pone en la parte superior izquierda-->
+                <div class="contenedor d-flex align-items-start">
+
+                    <div> Con <strong>d-flex</strong> y <strong>align-items-start</strong> </div>
+                    <div> Caja 1</div>
+                    <div> Caja 2</div>
+                    <div> Caja 3</div>
+                </div>
+
+
+                <p> ALIGN-ITEMS-CENTER</p>
+
+                <!-- alinea los contenedores de forma horizontal (por el flex), y los centra de manera vertical-->
+                <div class="contenedor d-flex align-items-center">
+
+                    <div> Con <strong>d-flex</strong> y <strong>align-items-center</strong> </div>
+                    <div> Caja 1</div>
+                    <div> Caja 2</div>
+                    <div> Caja 3</div>
+                </div>
+                
+
+                <p> ALIGN-ITEMS-END</p>
+
+                <!-- alinea los contenedores de forma horizontal (por el flex), y los coloca abajo a la izquierda-->
+                <div class="contenedor d-flex align-items-end">
+
+                    <div> Con <strong>d-flex</strong> y <strong>align-items-end</strong> </div>
+                    <div> Caja 1</div>
+                    <div> Caja 2</div>
+                    <div> Caja 3</div>
+                </div>
+
+
+                <p> ALIGN-ITEMS-BASELINE</p>
+
+                <!-- alinea los contenedores de forma horizontal (por el flex)
+                    y los coloca en la parte superior izquierda, de acuerdo al texto que haya adentro-->
+                <div class="contenedor d-flex align-items-baseline">
+
+                    <div> Con <strong>d-flex</strong> y <strong>align-items-baseline</strong> </div>
+                    <div> Caja 1</div>
+                    <div> Caja 2</div>
+                    <div> Caja 3</div>
+                </div>
+
+
+                <p> ALIGN-ITEMS-STRETCH</p>
+
+                <!-- alinea los contenedores de forma horizontal (por el flex)
+                     y las cajas abarcarian el 100% del espacio disponible (en su alto)-->
+                <div class="contenedor d-flex align-items-stretch">
+
+                    <div> Con <strong>d-flex</strong> y <strong>align-items-stretch</strong> </div>
+                    <div> Caja 1</div>
+                    <div> Caja 2</div>
+                    <div> Caja 3</div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <!------------------------>
+        <!--     ALIGN SELF     -->
+        <!------------------------>
+        <div class="card" id="7">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>ALIGN SELF</h4>
+                <hr>
+
+                <!-- Variantes:
+                    align-self-start
+                    align-self-end
+                    align-self-center
+                    align-self-baseline
+                    align-self-stretch
+
+                    sm | md | lg | xl | xxl
+                    align-self-*-start
+                    align-self-*-end
+                    align-self-*-center
+                    align-self-*-baseline
+                    align-self-*-stretch
+                -->
+
+                <p> ALIGN-SELF-*</p>
+
+                <!-- usamos ALIGN-SELF en los ELEMENTOS DENTRO DEL CONTENEDOR, para ubicarlos individualmente,
+                    antes lo estabamos poniendo en el contenedor, por lo que todos sus elementos dentro actuaban 
+                    de la misma manera-->
+                <div class="contenedor d-flex">
+
+                    <div class="align-self-start"> align-self-start </div>
+                    <div class="align-self-center"> align-self-center </div>
+                    <div class="align-self-end"> align-self-end </div>
+                    <div class="align-self-baseline"> align-self-baseline </div>
+                    <div class="align-self-stretch"> align-self-stretch </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <!-------------------------->
+        <!--     AUTO MARGINS     -->
+        <!-------------------------->
+        <div class="card" id="8">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>AUTO MARGINS</h4>
+                <hr>
+
+                <p> MARGIN END AUTO </p>
+
+                <!-- ordenamos elementos de una manera, y queremos que un elemento o un grupo de elementos
+                se coloque/n en el margen opuesto al que se estan acomodando
+
+               -------------------------------------------------------------------------------------------------
+               - NOTA: si colocamos la clase en un elemento que no sea el primero de la fila, este arrastra a  -
+               - todos los elementos que esten en el lado al que se va a correr... por ejemplo, aqui estan     -
+               - todos los elementos en el lado derecho, si a la CAJA 3 le asignamos la clase ME-AUTO, los     -
+               - elementos CAJA 1 y CAJA 2, tambien se van a correr con la CAJA 3                              -
+               -------------------------------------------------------------------------------------------------
+                -->
+                <div class="contenedor d-flex justify-content-end">
+
+                    <!-- margin end auto "me-auto"-->
+                    <div class="me-auto"> me-auto </div>
+                    <div> Caja 2 </div>
+                    <div> Caja 3 </div>
+                    <div> Caja 4 </div>
+                </div>
+
+
+                <p> MARGIN START AUTO </p>
+
+                <!-- los elementos estan ordenados hacia la izquierda, al asignar a un elemento con el
+                margin start auto, este y todos los que esten a su lado derecho, se iran al margen opuesto-->
+                <div class="contenedor d-flex justify-content-start">
+
+                    <!-- margin start auto "ms-auto"-->
+                    <div> Caja 1 </div>
+                    <div> Caja 2 </div>
+                    <div> Caja 3 </div>
+                    <div class="ms-auto"> ms-auto </div>
+                </div>
+
+
+                <p> MARGIN BOTTOM AUTO </p>
+
+                <!-- los elementos estaran de forma flexible (se ponen uno a lado del otro).
+                con un formato de columna (ocupando todo el espacio posible y poniendose uno debajo del otro).
+                y a su vez los elementos estarán alineados arriba a la izquierda y un poco mas chicos
+                por esta propiedad (algin-items)
+            
+                a su vez a un elemento (EL PRIMERO) le colocamos el margin bottom para que su margen
+                de abajo crezca y el resto de elementos queden alineados en la parte inferior del contenedor
+                -->
+                <div class="contenedor d-flex flex-column align-items-start">
+
+                    <!-- margin bottom auto "mb-auto", SU MARGEN DE ABAJO CRECE-->
+                    <div class="mb-auto"> mb-auto </div>
+                    <div> Caja 2 </div>
+                    <div> Caja 3 </div>
+                </div>
+
+                <p> MARGIN TOP AUTO </p>
+
+                <!-- Lo mismo que el anterior, pero de manera opuesta, todos los elementos estan ordenados
+                en el lado derecho superior y al ultimo elemento le ponemos que su margen top sea auto, por
+                lo que su margen de arriba va a crecer, haciendo que los elementos que esten arriba, queden
+                como estaban y los que esten debajo de este, bajen-->
+                <div class="contenedor d-flex flex-column align-items-end">
+
+                    <!-- margin top auto "mt-auto", SU MARGEN DE ARRIBA CRECE-->
+                    <div> Caja 1 </div>
+                    <div> Caja 2 </div>
+                    <div class="mt-auto"> mt-auto </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <!----------------------->
+        <!--     FLEX WRAP     -->
+        <!----------------------->
+        <div class="card" id="9">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>WRAP</h4>
+                <hr>
+
+                <!-- Variantes:
+                    flex-nowrap
+                    flex-wrap
+                    flex-wrap-reverse
+
+                    sm | md | lg | xl | xxl
+                    flex-*-nowrap
+                    flex-*-wrap
+                    flex-*-wrap-reverse
+                -->
+
+                <p> FLEX-NOWRAP </p>
+
+                <!-- Cuando usamos DISPLAY FLEX, por defecto ya tiene agregada esta propiedad de flex-nowrap,
+                    es como FLEX-ROW, ya aparece por defecto.
+
+                    Lo que queremos decirle al contenedor con esta propiedad, es que no querer que las cajas
+                    (sus elementos) se pongan debajo. Que todas las cajas intenten estar dentro del contenedor,
+                    en una sola fila.  
+                -->
+                <div class="contenedor d-flex flex-nowrap">
+
+                    <!-- usamos EMET, al decir "div*17{Caja $}" y luego el tab-->
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    
+                </div>
+
+                <p> FLEX-WRAP </p>
+
+                <!-- 
+                    Con esta propiedad, le decimos al contenedor, que si sus elementos no caben en lo largo de
+                    la fila, los vaya poniendo debajo.
+                -->
+                <div class="contenedor d-flex flex-wrap">
+
+                    <!-- usamos EMET, al decir "div*17{Caja $}" y luego el tab-->
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                    
+                </div>
+                
+                <p> FLEX-WRAP-REVERSE </p>
+
+                <!-- 
+                    Con esta propiedad, cambiamos el orden de como se acomodaban las cajas.
+                -->
+                <div class="contenedor d-flex flex-wrap-reverse">
+
+                    <!-- usamos EMET, al decir "div*17{Caja $}" y luego el tab-->
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!------------------->
+        <!--     ORDER     -->
+        <!------------------->
+        <div class="card" id="10">
+            <div class="row my-5">
+            <div class="col">
+                
+                <h4>ORDER</h4>
+                <hr>
+
+                <!-- Variantes:
+                    order-1     order-5
+
+                    sm | md | lg | xl | xxl
+                    order-*-1   order-*-5
+                -->
+
+                <p> ORDER-N° (1-5) </p>
+
+                <!--  
+                    Estas propiedades nos permiten cambiar el orden de nuestras cajas.
+                    Del 1-5
+                    La propiedad se aplica a x elementos, el resto de elementos que no tengan esta propiedad
+                    (quedan excluidos de ese orden), se acomodan normalmente.
+                -->
+                <div class="contenedor d-flex flex-nowrap">
+
+                    <!-- -->
+                    <div class="order-1">Caja 1 - orden con la propiedad</div>
+                    <div>Caja 2 - orden normal </div>
+                    <div class="order-2">Caja 3 - orden con la propiedad</div>
+                    <div class="order-3">Caja 4 - orden con la propiedad</div>
+                    <div>Caja 5 - orden normal</div>
+                    
+                </div>
+
+                
+            </div>
+            </div>
+        </div>
+
+        <!--------------------------->
+        <!--     ALIGN CONTENT     -->
+        <!--------------------------->
+        <div class="card" id="11">
+            <div class="row my-5">
+            <div class="col">
+
+                <h4>ALIGN CONTENT (+ usado cuando hay muchas filas)</h4>
+                <hr>
+
+                <p> ALIGN-CONTENT-START</p>
+                <!-- permite trabajar con grupos de cajas, que abarcan varias filas y que podemos
+                centrar de manera vertical (por lo general se usa con FLEX-WRAP)... 
+                en este caso las ponemos todas arriba-->
+
+                <div class="contenedor d-flex flex-wrap align-content-start">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+                <p> ALIGN-CONTENT-CENTER</p>
+                <!-- centramos el contenido de manera vertical-->
+
+                <div class="contenedor d-flex flex-wrap align-content-center">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+                <p> ALIGN-CONTENT-END</p>
+                <!-- Todo el contenido queda centrado en la parte de abajo-->
+
+                <div class="contenedor d-flex flex-wrap align-content-end">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+                <p> ALIGN-CONTENT-BETWEEN</p>
+                <!-- El espacio sobrante lo divide, lo pone en medio de las filas-->
+
+                <div class="contenedor d-flex flex-wrap align-content-between">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+                <p> ALIGN-CONTENT-AROUND</p>
+                <!-- En la parte de arriba y de abajo de cada fila, añade los espacios-->
+
+                <div class="contenedor d-flex flex-wrap align-content-around">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+                <p> ALIGN-CONTENT-STRETCH</p>
+                <!-- no se presentan cambios, debido que se agranda todo lo que puede, y al tener
+                dos filas, no se puede agrandar más-->
+
+                <div class="contenedor d-flex flex-wrap align-content-stretch">
+                    <div>Caja 1</div>
+                    <div>Caja 2</div>
+                    <div>Caja 3</div>
+                    <div>Caja 4</div>
+                    <div>Caja 5</div>
+                    <div>Caja 6</div>
+                    <div>Caja 7</div>
+                    <div>Caja 8</div>
+                    <div>Caja 9</div>
+                    <div>Caja 10</div>
+                    <div>Caja 11</div>
+                    <div>Caja 12</div>
+                    <div>Caja 13</div>
+                    <div>Caja 14</div>
+                    <div>Caja 15</div>
+                    <div>Caja 16</div>
+                    <div>Caja 17</div>
+                    <div>Caja 18</div>
+                    <div>Caja 19</div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
